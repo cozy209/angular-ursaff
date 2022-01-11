@@ -4,13 +4,15 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
 import {environment} from "../environments/environment";
+import { ZooComponent } from './zoo/zoo.component';
 
 @NgModule({
   declarations: [
     AppComponent,
+    ZooComponent,
   ],
   imports: [
-    NgxsModule.forRoot([null], {
+    NgxsModule.forRoot([ZooComponent], {
       developmentMode: !environment.production
     }),
     BrowserModule
