@@ -1,0 +1,28 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col">Numero de compte</div>
+        <div class="col">
+            <input class="d-inline-block"/>
+        </div>
+        <div class="col">UR du compte</div>
+        <div class="col">
+            <input class="d-inline-block"/>
+        </div>
+        <div class="col">type de compte</div>
+        <div class="col">
+            <input class="d-inline-block"/>
+        </div>
+        <div class="w-100"></div>
+        <div class="col col-example">Période du</div>
+        <div class="col col-example">
+            <input type="text" ngbDatepicker #d1="ngbDatepicker" (click)="d1.toggle()"/>
+        </div>
+        <div class="col col-example"> au </div>
+        <div class="col col-example">
+            <input type="text" ngbDatepicker #d2="ngbDatepicker" (click)="d2.toggle()"/>
+        </div>
+        <div class="col"></div>
+        <div class="col"></div>
+        <div class="col"></div>
+    </div>
+</div>
