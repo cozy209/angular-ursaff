@@ -1,28 +1,46 @@
-<div class="container-fluid">
-    <div class="row">
-        <div class="col">Numero de compte</div>
-        <div class="col">
-            <input class="d-inline-block"/>
+<form class="m-2 mx-3">
+    <div class="form-row flex-row align-items-center my-3">
+        <div class="d-flex flex-row align-items-center flex-grow-1">
+            <label class="mb-0 mr-3">Numero de compte</label>
+            <select class="form-control w-50">
+                <option value="">Tous</option>
+                <option *ngFor="let nb of accountNb" [value]="nb.AccountNb"> {{nb.AccountNb}} </option>
+            </select>
         </div>
-        <div class="col">UR du compte</div>
-        <div class="col">
-            <input class="d-inline-block"/>
+        <div class="d-flex flex-row align-items-center flex-grow-1">
+            <label class="mb-0 mr-3">UR du compte</label>
+            <select class="form-control w-50">
+                <option value="">Tous</option>
+                <option *ngFor="let nb of accountNb" [value]="nb.AccountNb"> {{nb.AccountNb}} </option>
+            </select>
         </div>
-        <div class="col">type de compte</div>
-        <div class="col">
-            <input class="d-inline-block"/>
+        <div class="d-flex flex-row align-items-center flex-grow-1">
+            <label class="mb-0 mr-3">Type de compte</label>
+            <select class="form-control w-50">
+                <option value="">Tous</option>
+                <option *ngFor="let nb of accountNb" [value]="nb.AccountNb"> {{nb.AccountNb}} </option>
+            </select>
         </div>
-        <div class="w-100"></div>
-        <div class="col col-example">Période du</div>
-        <div class="col col-example">
-            <input type="text" ngbDatepicker #d1="ngbDatepicker" (click)="d1.toggle()"/>
-        </div>
-        <div class="col col-example"> au </div>
-        <div class="col col-example">
-            <input type="text" ngbDatepicker #d2="ngbDatepicker" (click)="d2.toggle()"/>
-        </div>
-        <div class="col"></div>
-        <div class="col"></div>
-        <div class="col"></div>
     </div>
-</div>
+    <div class="form-row flex-row align-items-center my-3">
+        <div class="d-flex flex-row align-items-center flex-grow-1">
+            <label class="mb-0 mr-3">Période du</label>
+            <div class="input-group w-25">
+                <input type="text" class="form-control" name="periodstart" [(ngModel)]="periodStart" ngbDatepicker #periodStartD="ngbDatepicker">
+                <div class="input-group-append">
+                    <button class="btn btn-outline-primary" type="button" (click)="periodStartD.toggle()"><fa-icon [icon]="faCalendarAlt"></fa-icon></button>
+                </div>
+            </div>
+            <label class="d-flex justify-content-center mt-1 mx-3"> au </label>
+            <div class="input-group w-25">
+                <input type="text" class="form-control" name="periodend" [(ngModel)]="periodEnd" ngbDatepicker #periodEndD="ngbDatepicker">
+                <div class="input-group-append">
+                    <button class="btn btn-outline-primary" type="button" (click)="periodEndD.toggle()"><fa-icon [icon]="faCalendarAlt"></fa-icon></button>
+                </div>
+            </div>
+        </div>
+        <div class="d-flex flex-row align-items-center flex-grow-1">
+            <button class="btn btn-outline-primary" type="button" (click)="logPeriods()">Log</button>
+        </div>
+    </div>
+</form>

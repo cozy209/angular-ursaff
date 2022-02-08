@@ -1,0 +1,18 @@
+<div>
+    <div class="d-flex flex-row justify-content-between">
+        <div class="btn-group btn-group-toggle bg-white" data-toggle="buttons">
+            <label class="btn btn-outline-secondary" [ngClass]="{'active':radiotab==1}">
+                <input type="radio" name="options" id="option1" autocomplete="off" (click)="setRadioTab(1)" checked> Eléments de carrière vision actualisée Urssaf  {{count.actualized}}
+            </label>
+            <label class="btn btn-outline-secondary" [ngClass]="{'active':radiotab==2}">
+                <input type="radio" name="options" id="option2" autocomplete="off" (click)="setRadioTab(2)"> Eléments de carrière vision de référence Urssaf  {{count.reference}}
+            </label>
+        </div>
+        <div>
+            <button class="btn btn-outline-success disabled"><fa-icon [icon]="faFileExcel"></fa-icon> Exporter</button>
+        </div>
+    </div>
+    <div>
+        <app-table></app-table>
+    </div>
+</div>
