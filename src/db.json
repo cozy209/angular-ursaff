@@ -1,0 +1,11 @@
+{
+  "elements": [
+    { "ContributorAccountNo": 99377, "PeriodStart": {"year": 2022, "month":  1, "day": 1}, "PeriodEnd": {"year": 2022, "month":  2, "day": 1}, "AccountType": "AccountType1", "ActivityType": "ActivityType1", "ContributorCategory": 1, "ImageState": 1 },
+    { "ContributorAccountNo": 31067, "PeriodStart": {"year": 2021, "month":  1, "day": 1}, "PeriodEnd": {"year": 2021, "month":  2, "day": 1}, "AccountType": "AccountType2", "ActivityType": "ActivityType1", "ContributorCategory": 3, "ImageState": 1 },
+    { "ContributorAccountNo": 60023, "PeriodStart": {"year": 2022, "month":  1, "day": 10}, "PeriodEnd": {"year": 2022, "month":  1, "day": 15}, "AccountType": "AccountType1", "ActivityType": "ActivityType3", "ContributorCategory": 5, "ImageState": 1 },
+    { "ContributorAccountNo": 57045, "PeriodStart": {"year": 2022, "month":  1, "day": 3}, "PeriodEnd": {"year": 2022, "month":  2, "day": 22}, "AccountType": "AccountType2", "ActivityType": "ActivityType2", "ContributorCategory": 2, "ImageState": 1 },
+    { "ContributorAccountNo": 10675, "PeriodStart": {"year": 2022, "month":  1, "day": 28}, "PeriodEnd": {"year": 2022, "month":  2, "day": 28}, "AccountType": "AccountType1", "ActivityType": "ActivityType3", "ContributorCategory": 4, "ImageState": 1 },
+    { "ContributorAccountNo": 23687, "PeriodStart": {"year": 2022, "month":  1, "day": 1}, "PeriodEnd": {"year": 2022, "month":  3, "day": 1}, "AccountType": "AccountType2", "ActivityType": "ActivityType1", "ContributorCategory": 6, "ImageState": 1 }
+  ]
+
+}
