@@ -1,12 +1,12 @@
 <div class="container-fluid bg-beige">
     <div class="row">
         <div class="col">
-            <app-criterias></app-criterias>
+            <app-criterias [rowData]="rowData" (onFilterData)="filterData($event)"></app-criterias>
         </div>
     </div>
     <div class="row">
         <div class="col">
-            <app-element-tab></app-element-tab>
+            <app-element-tab [rowData]="rowData"></app-element-tab>
         </div>
     </div>
 </div>

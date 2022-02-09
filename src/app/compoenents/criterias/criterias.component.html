@@ -4,17 +4,17 @@
             <h2 class="title">Criteres d'affichage</h2>
         </div>
         <div class="col text-right">
-            <button class="btn btn-outline-primary"><fa-icon [icon]="faTrash"></fa-icon> Reinitialiser critères</button>
+            <button class="btn btn-outline-primary" (click)="resetCriteria()"><fa-icon [icon]="faTrash"></fa-icon> Reinitialiser critères</button>
         </div>
     </div>
     <div class="row">
         <div class="col">
-            <app-filters></app-filters>
+            <app-filters [rowData]="rowData" [(criteria)]="criteria"></app-filters>
         </div>
     </div>
     <div class="row">
         <div class="col text-right">
-            <button class="btn btn-outline-primary"><fa-icon [icon]="faSyncAlt"></fa-icon> Actualiser</button>
+            <button class="btn btn-outline-primary" (click)="filterData()"><fa-icon [icon]="faSyncAlt"></fa-icon> Actualiser</button>
         </div>
     </div>
 </div>

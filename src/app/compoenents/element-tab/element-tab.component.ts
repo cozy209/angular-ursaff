@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import { faFileExcel } from "@fortawesome/free-solid-svg-icons";
+import {Accountelement} from "../../model/accountelement.model";
 
 @Component({
   selector: 'app-element-tab',
@@ -7,6 +8,9 @@ import { faFileExcel } from "@fortawesome/free-solid-svg-icons";
   styleUrls: ['./element-tab.component.css']
 })
 export class ElementTabComponent implements OnInit {
+
+  @Input()
+  rowData: Accountelement[] | undefined;
 
   count = {actualized: 0, reference: 0};
 
@@ -21,4 +25,5 @@ export class ElementTabComponent implements OnInit {
   setRadioTab(id: number) {
     this.radiotab = id;
   }
+
 }

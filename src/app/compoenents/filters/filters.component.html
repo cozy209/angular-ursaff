@@ -2,23 +2,23 @@
     <div class="form-row flex-row align-items-center my-3">
         <div class="d-flex flex-row align-items-center flex-grow-1">
             <label class="mb-0 mr-3">Numero de compte</label>
-            <select class="form-control w-50">
-                <option value="">Tous</option>
-                <option *ngFor="let nb of accountNb" [value]="nb.AccountNb"> {{nb.AccountNb}} </option>
+            <select class="form-control w-50" [(ngModel)]="criteria.contributorAccountNo" name="contributorAccountNo">
+                <option [value]="undefined">Tous</option>
+                <option *ngFor="let nb of getAccountNbs()" [value]="nb"> {{nb}} </option>
             </select>
         </div>
         <div class="d-flex flex-row align-items-center flex-grow-1">
             <label class="mb-0 mr-3">UR du compte</label>
             <select class="form-control w-50">
-                <option value="">Tous</option>
-                <option *ngFor="let nb of accountNb" [value]="nb.AccountNb"> {{nb.AccountNb}} </option>
+                <option [value]="undefined">Tous</option>
+                <option *ngFor="let ur of accountUR" [value]="ur.accountUR"> {{ur.accountUR}} </option>
             </select>
         </div>
         <div class="d-flex flex-row align-items-center flex-grow-1">
             <label class="mb-0 mr-3">Type de compte</label>
-            <select class="form-control w-50">
-                <option value="">Tous</option>
-                <option *ngFor="let nb of accountNb" [value]="nb.AccountNb"> {{nb.AccountNb}} </option>
+            <select class="form-control w-50" [(ngModel)]="criteria.accountType" name="accountType">
+                <option [value]="undefined">Tous</option>
+                <option *ngFor="let type of getAccountTypes()" [value]="type"> {{type}} </option>
             </select>
         </div>
     </div>
@@ -26,21 +26,20 @@
         <div class="d-flex flex-row align-items-center flex-grow-1">
             <label class="mb-0 mr-3">Période du</label>
             <div class="input-group w-25">
-                <input type="text" class="form-control" name="periodstart" [(ngModel)]="periodStart" ngbDatepicker #periodStartD="ngbDatepicker">
+                <input type="text" class="form-control" name="periodStart" [(ngModel)]="criteria.periodStart" ngbDatepicker #periodStartD="ngbDatepicker">
                 <div class="input-group-append">
                     <button class="btn btn-outline-primary" type="button" (click)="periodStartD.toggle()"><fa-icon [icon]="faCalendarAlt"></fa-icon></button>
                 </div>
             </div>
             <label class="d-flex justify-content-center mt-1 mx-3"> au </label>
             <div class="input-group w-25">
-                <input type="text" class="form-control" name="periodend" [(ngModel)]="periodEnd" ngbDatepicker #periodEndD="ngbDatepicker">
+                <input type="text" class="form-control" name="periodEnd" [(ngModel)]="criteria.periodEnd" ngbDatepicker #periodEndD="ngbDatepicker">
                 <div class="input-group-append">
                     <button class="btn btn-outline-primary" type="button" (click)="periodEndD.toggle()"><fa-icon [icon]="faCalendarAlt"></fa-icon></button>
                 </div>
             </div>
         </div>
         <div class="d-flex flex-row align-items-center flex-grow-1">
-            <button class="btn btn-outline-primary" type="button" (click)="logPeriods()">Log</button>
         </div>
     </div>
 </form>

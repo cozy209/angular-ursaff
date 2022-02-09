@@ -9,6 +9,4 @@ export class Date {
         this.month = month;
         this.day = day;
     }
-
-
 }
