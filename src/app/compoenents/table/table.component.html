@@ -1,8 +1,27 @@
-<ag-grid-angular
-        style="width: 100%; height: 400px;"
-        class="ag-theme-alpine"
-        [rowData]="rowData"
-        [columnDefs]="columnDefs"
-        [paginationAutoPageSize]="true"
-        [pagination]="true">
-</ag-grid-angular>
+<div class="bg-white p-2">
+    <ag-grid-angular
+            style="width: 100%; height: 300px;"
+            class="ag-theme-alpine"
+            [rowData]="rowData"
+            [columnDefs]="columnDefs"
+            [pagination]="false">
+    </ag-grid-angular>
+    <div class="d-flex flex-row justify-content-between pt-2">
+        <div class="d-flex flex-row align-items-center flex-grow-1">
+            <label class="mb-0 mr-3">Lignes par pages : </label>
+            <select [(ngModel)]="elementNb" name="accountType">
+                <option *ngFor="let nb of elementNumbers" [value]="nb"> {{nb}} </option>
+            </select>
+            <label class="mb-0 mx-3">Nombre total de lignes : {{totalCount}} </label>
+        </div>
+        <div>
+            <fa-icon [icon]="faAngleDoubleLeft" class="m-1" (click)="goToPage(0)"></fa-icon>
+            <fa-icon [icon]="faAngleLeft" class="m-1" (click)="goToPage(pageNb-1)"></fa-icon>
+            <label>Page</label>
+            <input [(ngModel)]="pageNb" (change)="goToPage(pageNb)" type="number"  class="m-1 w-25">
+            <label>/ {{getMaxPageNumber()}}</label>
+            <fa-icon [icon]="faAngleRight" class="m-1" (click)="goToPage(pageNb+1)"></fa-icon>
+            <fa-icon [icon]="faAngleDoubleRight" class="m-1" (click)="goToPage(getMaxPageNumber())"></fa-icon>
+        </div>
+    </div>
+</div>

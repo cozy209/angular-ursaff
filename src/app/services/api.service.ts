@@ -23,7 +23,7 @@ export class ApiService {
 
   getElementsForPageAndElementNumber(pageNb:number, elementsNb:number){
     let specificURL = "/elements?_page="+pageNb+"&_limit="+elementsNb;
-    return this.http.get<Accountelement[]>(this.baseURL+specificURL);
+    return this.http.get<any>(this.baseURL+specificURL,{observe: 'response'});
   }
 
   getElementsForCriterias(criterias:Accountelement){
@@ -53,6 +53,5 @@ export class ApiService {
     return this.http.get<Accountelement[]>(this.baseURL+specificURL);
 
   }
-
 
 }

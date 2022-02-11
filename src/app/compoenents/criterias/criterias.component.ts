@@ -15,6 +15,12 @@ export class CriteriasComponent implements OnInit {
   criteria: Accountelement;
 
   @Input()
+  allAccountNumbers!: (number | undefined) [];
+
+  @Input()
+  allAccountTypes!: (string | undefined) [];
+
+  @Input()
   rowData: Accountelement[] | undefined;
 
   @Output()

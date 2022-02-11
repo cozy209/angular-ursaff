@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import { faFileExcel } from "@fortawesome/free-solid-svg-icons";
 import {Accountelement} from "../../model/accountelement.model";
 
@@ -8,6 +8,22 @@ import {Accountelement} from "../../model/accountelement.model";
   styleUrls: ['./element-tab.component.css']
 })
 export class ElementTabComponent implements OnInit {
+
+
+  @Input()
+  pageNb!: number;
+
+  @Output()
+  pageNbChange: EventEmitter<number> = new EventEmitter<number>();
+
+  @Input()
+  elementNb!: number;
+
+  @Output()
+  elementNbChange: EventEmitter<number> = new EventEmitter<number>();
+
+  @Input()
+  totalCount!: number;
 
   @Input()
   rowData: Accountelement[] | undefined;

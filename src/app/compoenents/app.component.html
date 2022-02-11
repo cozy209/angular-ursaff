@@ -1,12 +1,12 @@
-<div class="container-fluid bg-beige">
+<div class="container-fluid bg-beige p-2">
     <div class="row">
         <div class="col">
-            <app-criterias [rowData]="rowData" (onFilterData)="filterData($event)"></app-criterias>
+            <app-criterias [rowData]="rowData" (onFilterData)="filterData($event)" [allAccountNumbers]="allAccountNumbers" [allAccountTypes]="allAccountTypes"></app-criterias>
         </div>
     </div>
     <div class="row">
         <div class="col">
-            <app-element-tab [rowData]="rowData"></app-element-tab>
+            <app-element-tab [rowData]="rowData" (pageNbChange)="goToPage($event)" [pageNb]="pageNb" [elementNb]="elementNb" (elementNbChange)="changeElementNumber($event)" [totalCount]="totalCount"></app-element-tab>
         </div>
     </div>
 </div>

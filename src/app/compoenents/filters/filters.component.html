@@ -4,7 +4,7 @@
             <label class="mb-0 mr-3">Numero de compte</label>
             <select class="form-control w-50" [(ngModel)]="criteria.contributorAccountNo" name="contributorAccountNo">
                 <option [value]="undefined">Tous</option>
-                <option *ngFor="let nb of getAccountNbs()" [value]="nb"> {{nb}} </option>
+                <option *ngFor="let nb of accountNb" [value]="nb"> {{nb}} </option>
             </select>
         </div>
         <div class="d-flex flex-row align-items-center flex-grow-1">

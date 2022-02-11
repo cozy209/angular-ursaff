@@ -1,4 +1,5 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {faAngleLeft, faAngleRight, faAngleDoubleLeft, faAngleDoubleRight} from "@fortawesome/free-solid-svg-icons";
 import { ColDef } from 'ag-grid-community';
 import {Accountelement} from "../../model/accountelement.model";
 
@@ -11,6 +12,11 @@ export class TableComponent implements OnInit {
 
   @Input()
   rowData: Accountelement[] | undefined;
+
+  faAngleLeft = faAngleLeft;
+  faAngleRight = faAngleRight;
+  faAngleDoubleLeft = faAngleDoubleLeft;
+  faAngleDoubleRight = faAngleDoubleRight;
 
   columnDefs: ColDef[] = [
     { field: 'contributorAccountNo', sortable: true },
@@ -26,6 +32,23 @@ export class TableComponent implements OnInit {
     { field: 'imageState', sortable: true }
   ];
 
+  elementNumbers: number[] = [5,10,20,50,100];
+
+  @Input()
+  pageNb!: number;
+
+  @Output()
+  pageNbChange: EventEmitter<number> = new EventEmitter<number>();
+
+  @Input()
+  elementNb!: number;
+
+  @Output()
+  elementNbChange: EventEmitter<number> = new EventEmitter<number>();
+
+  @Input()
+  totalCount!: number;
+
   constructor() {}
 
   ngOnInit(): void {
@@ -37,5 +60,12 @@ export class TableComponent implements OnInit {
     return number;
   }
 
+  getMaxPageNumber() {
+    return Math.ceil(this.totalCount/this.elementNb);
+  }
 
+  goToPage(pageNumber: number) {
+    this.pageNb = pageNumber;
+    this.pageNbChange.emit(this.pageNb);
+  }
 }

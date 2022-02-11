@@ -10,14 +10,6 @@ import {Accountelement} from "../../model/accountelement.model";
 })
 export class FiltersComponent implements OnInit {
 
-  accountNb = [
-    { AccountNb: 993771 },
-    { AccountNb: 31067 },
-    { AccountNb: 60023 },
-    { AccountNb: 57045 },
-    { AccountNb: 10675 },
-    { AccountNb: 23687 }
-  ];
   accountUR = [
     { accountUR: 99377 },
     { accountUR: 31067 },
@@ -37,6 +29,12 @@ export class FiltersComponent implements OnInit {
 
   periodStart: Date | undefined;
   periodEnd: Date | undefined;
+
+  @Input()
+  accountNb!: (number | undefined) [];
+
+  @Input()
+  accountTypes!: (string | undefined) [];
 
   @Input()
   criteria!: Accountelement;

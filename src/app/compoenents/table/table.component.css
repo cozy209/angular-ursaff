@@ -1,3 +1,7 @@
 .header_one {
     background-color: red;
 }
+.number{
+    width: 3em;
+    text-align: right;
+}

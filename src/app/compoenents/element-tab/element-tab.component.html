@@ -13,6 +13,6 @@
         </div>
     </div>
     <div>
-        <app-table [rowData]="rowData"></app-table>
+        <app-table [rowData]="rowData" [(elementNb)]="elementNb" (pageNbChange)="pageNbChange.emit($event)" [pageNb]="pageNb" [totalCount]="totalCount"></app-table>
     </div>
 </div>
