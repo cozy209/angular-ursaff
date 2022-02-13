@@ -23,7 +23,9 @@ export class AppComponent {
     this.apiService = apiService;
     this.goToPage(this.pageNb);
     this.getAllAccountNb()
+    this.getAllAccountTypes();
   }
+
 
   filterData(criteria: Accountelement) {
     this.apiService.getElementsForCriterias(criteria).subscribe(result=> {
@@ -40,12 +42,18 @@ export class AppComponent {
 
   getAllAccountTypes(){
     this.apiService.getAllElements().subscribe( result => {
-      this.allAccountTypes = result.map(element => element.accountType)
+      let accountTypes = result.map(element => element.accountType);
+      this.allAccountTypes = accountTypes.filter( (item, pos) => {return accountTypes.indexOf(item) == pos} );
     })
   }
 
   goToPage($event: number) {
-    this.apiService.getElementsForPageAndElementNumber($event, this.elementNb).subscribe(result =>{
+    this.pageNb = $event;
+    this.getElementsForPageAndElementNumber();
+  }
+
+  private getElementsForPageAndElementNumber() {
+    this.apiService.getElementsForPageAndElementNumber(this.pageNb, this.elementNb).subscribe(result => {
       this.rowData = result.body;
       let xTotalCount = result.headers.get('X-Total-Count');
       this.totalCount = parseInt(xTotalCount != null ? xTotalCount : "0");
@@ -55,6 +63,7 @@ export class AppComponent {
   }
 
   changeElementNumber($event: number) {
-    console.log($event)
+    this.elementNb = $event;
+    this.getElementsForPageAndElementNumber();
   }
 }

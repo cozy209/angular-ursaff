@@ -1,6 +1,7 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import { faFileExcel } from "@fortawesome/free-solid-svg-icons";
 import {Accountelement} from "../../model/accountelement.model";
+import {Subject} from "rxjs";
 
 @Component({
   selector: 'app-element-tab',
@@ -32,6 +33,12 @@ export class ElementTabComponent implements OnInit {
 
   faFileExcel = faFileExcel;
   radiotab = 1;
+
+  eventsSubject: Subject<void> = new Subject<void>();
+
+  emitEventToChild() {
+    this.eventsSubject.next();
+  }
 
   constructor() { }
 

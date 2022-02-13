@@ -18,14 +18,6 @@ export class FiltersComponent implements OnInit {
     { accountUR: 10675 },
     { accountUR: 23687 }
   ];
-  accountType = [
-    { accountType: 'AccountType1' },
-    { accountType: 'AccountType2' },
-    { accountType: 'AccountType3' },
-    { accountType: 'AccountType4' },
-    { accountType: 'AccountType5' },
-    { accountType: 'AccountType6' }
-  ];
 
   periodStart: Date | undefined;
   periodEnd: Date | undefined;

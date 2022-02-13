@@ -1,7 +1,9 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {faAngleLeft, faAngleRight, faAngleDoubleLeft, faAngleDoubleRight} from "@fortawesome/free-solid-svg-icons";
-import { ColDef } from 'ag-grid-community';
+import {ColDef, GridOptions} from 'ag-grid-community';
 import {Accountelement} from "../../model/accountelement.model";
+import {Observable, Subscription} from "rxjs";
+import * as XLSX from 'xlsx';
 
 @Component({
   selector: 'app-table',
@@ -11,12 +13,14 @@ import {Accountelement} from "../../model/accountelement.model";
 export class TableComponent implements OnInit {
 
   @Input()
-  rowData: Accountelement[] | undefined;
+  rowData: Accountelement[] | undefined = undefined;
 
   faAngleLeft = faAngleLeft;
   faAngleRight = faAngleRight;
   faAngleDoubleLeft = faAngleDoubleLeft;
   faAngleDoubleRight = faAngleDoubleRight;
+
+  gridOptions : GridOptions;
 
   columnDefs: ColDef[] = [
     { field: 'contributorAccountNo', sortable: true },
@@ -49,9 +53,24 @@ export class TableComponent implements OnInit {
   @Input()
   totalCount!: number;
 
-  constructor() {}
+  private eventsSubscription!: Subscription;
+
+  @Input()
+  events!: Observable<void>;
+
+  constructor() {
+    this.gridOptions = {
+      suppressPaginationPanel : true,
+      pagination : true
+    }
+  }
 
   ngOnInit(): void {
+    this.eventsSubscription = this.events.subscribe(() => this.exportGridExcel());
+  }
+
+  ngOnDestroy() {
+    this.eventsSubscription.unsubscribe();
   }
 
   pad(num: number, size: number) {
@@ -67,5 +86,48 @@ export class TableComponent implements OnInit {
   goToPage(pageNumber: number) {
     this.pageNb = pageNumber;
     this.pageNbChange.emit(this.pageNb);
+  }
+
+  // Export data with ag grid
+
+  exportGridAgGrid(){
+    this.gridOptions.api!.exportDataAsCsv(this.getParams());
+  }
+
+  getParams() {
+    return {
+      columnSeparator: ";",
+    };
+  }
+
+  // Axport data without ag grid
+
+  exportGridExcel(){
+
+    let exportData = this.format(this.rowData);
+    let workSheet = XLSX.utils.json_to_sheet(exportData);
+    let workBook = XLSX.utils.book_new();
+    XLSX.utils.book_append_sheet(workBook, workSheet, "Sheet1");
+    XLSX.writeFile(workBook,"export.xlsx");
+  }
+
+  format(rowData: Accountelement[] | undefined) {
+    if (rowData != undefined){
+      let formatedData : Object[] = []
+      rowData.forEach( element => formatedData.push(
+          {
+            contributorAccountNo: element.contributorAccountNo,
+            periodStart : element.periodStart?.year+"-"+element.periodStart?.month+"-"+element.periodStart?.day,
+            periodEnd : element.periodEnd?.year+"-"+element.periodEnd?.month+"-"+element.periodEnd?.day,
+            accountType : element.accountType,
+            activityType : element.activityType,
+            contributorCategory : element.contributorCategory,
+            imageState : element.imageState
+          }
+      ))
+      return formatedData;
+    } else {
+      return [];
+    }
   }
 }

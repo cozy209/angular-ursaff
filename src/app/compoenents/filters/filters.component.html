@@ -18,7 +18,7 @@
             <label class="mb-0 mr-3">Type de compte</label>
             <select class="form-control w-50" [(ngModel)]="criteria.accountType" name="accountType">
                 <option [value]="undefined">Tous</option>
-                <option *ngFor="let type of getAccountTypes()" [value]="type"> {{type}} </option>
+                <option *ngFor="let type of accountTypes" [value]="type"> {{type}} </option>
             </select>
         </div>
     </div>

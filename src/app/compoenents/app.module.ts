@@ -11,6 +11,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { ElementTabComponent } from './element-tab/element-tab.component';
 import {FormsModule} from "@angular/forms";
 import {HttpClientModule} from "@angular/common/http";
+import {ExcelExportModule} from "@ag-grid-enterprise/excel-export";
 
 @NgModule({
   declarations: [
@@ -22,7 +23,7 @@ import {HttpClientModule} from "@angular/common/http";
   ],
     imports: [
         BrowserModule,
-        AgGridModule.withComponents([]),
+        AgGridModule.withComponents([ExcelExportModule]),
         NgbModule,
         FontAwesomeModule,
         FormsModule,

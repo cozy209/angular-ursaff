@@ -9,10 +9,10 @@
             </label>
         </div>
         <div>
-            <button class="btn btn-outline-success disabled"><fa-icon [icon]="faFileExcel"></fa-icon> Exporter</button>
+            <button class="btn btn-outline-success" (click)="emitEventToChild()"><fa-icon [icon]="faFileExcel"></fa-icon> Exporter</button>
         </div>
     </div>
     <div>
-        <app-table [rowData]="rowData" [(elementNb)]="elementNb" (pageNbChange)="pageNbChange.emit($event)" [pageNb]="pageNb" [totalCount]="totalCount"></app-table>
+        <app-table [events]="eventsSubject.asObservable()" [rowData]="rowData" (elementNbChange)="elementNbChange.emit($event)" [elementNb]="elementNb" (pageNbChange)="pageNbChange.emit($event)" [pageNb]="pageNb" [totalCount]="totalCount"></app-table>
     </div>
 </div>
